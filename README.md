@@ -152,7 +152,7 @@ Here, instead of using `expect().toBe()`, we call a function named `done()` if o
 
 ### $httpBackend.flush()
 
-We then need to call `$httpBackend.flush()` to immediately execute all pending requests.
+We then need to call `$httpBackend.flush()` to immediately execute all pending requests (which then fires off our request, calling our callback with the returned data and runs the test).
 
 ```js
 describe('UserService', function () {
