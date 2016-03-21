@@ -141,7 +141,7 @@ describe('UserService', function () {
 });
 ```
 
-Here, instead of using `expect().toBe()`, we call a function named `done()` if our response is correct. This means that we can do asynchronous tests in Jasmine.
+Here, instead of using `expect().toBe()`, we call a function named `done()` if our response is correct. This means that we can do asynchronous tests in Jasmine. An important item to note here is that we must pass the `done` function in as a argument to this test for this feature to work. 
 
 ### $httpBackend.flush()
 
