@@ -21,8 +21,6 @@ Let's take a look at how we'd grab our service:
 
 ```js
 describe('OurService', function () {
-    var $controller;
-
     beforeEach(module('app'));
 
     var OurService;
@@ -47,8 +45,6 @@ For instance, for our `MathService` that we used earlier on in the series, we ca
 
 ```js
 describe('MathService', function () {
-    var $controller;
-
     beforeEach(module('app'));
 
     var MathService;
@@ -80,14 +76,13 @@ If we have a backend endpoint at `/rest/user` that responds with the current use
 
 ```js
 describe('UserService', function () {
-    var $controller;
-
     beforeEach(module('app'));
 
-    var UserService;
+    var UserService, $httpBackend;
 
     beforeEach(inject(function ($injector) {
         UserService = $injector.get('UserService');
+        $httpBackend = $injector.get('$httpBackend');
 
         $httpBackend.when('GET', '/rest/user').respond({user: 'Bill Gates', email: 'bill@microsoft.com'});
     }));
@@ -100,14 +95,13 @@ Now, when we actually test the service's function that calls that endpoint, we n
 
 ```js
 describe('UserService', function () {
-    var $controller;
-
     beforeEach(module('app'));
 
-    var UserService;
+    var UserService, $httpBackend;
 
     beforeEach(inject(function ($injector) {
         UserService = $injector.get('UserService');
+        $httpBackend = $injector.get('$httpBackend');
 
         $httpBackend.when('GET', '/rest/user').respond({user: 'Bill Gates', email: 'bill@microsoft.com'});
     }));
@@ -122,14 +116,13 @@ We're now setup to receive the mocked backend response. In this case, we'll get 
 
 ```js
 describe('UserService', function () {
-    var $controller;
-
     beforeEach(module('app'));
 
-    var UserService;
+    var UserService, $httpBackend;
 
     beforeEach(inject(function ($injector) {
         UserService = $injector.get('UserService');
+        $httpBackend = $injector.get('$httpBackend');
 
         $httpBackend.when('GET', '/rest/user').respond({user: 'Bill Gates', email: 'bill@microsoft.com'});
     }));
@@ -148,7 +141,7 @@ describe('UserService', function () {
 });
 ```
 
-Here, instead of using `expect().toBe()`, we call a function named `done()` if our response is correct. This means that we can do asynchronous tests in Jasmine.
+Here, instead of using `expect().toBe()`, we call a function named `done()` if our response is correct. This means that we can do asynchronous tests in Jasmine. An important item to note here is that we must pass the `done` function in as a argument to this test for this feature to work. 
 
 ### $httpBackend.flush()
 
@@ -156,14 +149,13 @@ We then need to call `$httpBackend.flush()` to immediately execute all pending r
 
 ```js
 describe('UserService', function () {
-    var $controller;
-
     beforeEach(module('app'));
 
-    var UserService;
+    var UserService, $httpBackend;
 
     beforeEach(inject(function ($injector) {
         UserService = $injector.get('UserService');
+        $httpBackend = $injector.get('$httpBackend');
 
         $httpBackend.when('GET', '/rest/user').respond({user: 'Bill Gates', email: 'bill@microsoft.com'});
     }));
