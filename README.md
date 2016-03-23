@@ -15,7 +15,7 @@ Our services are grabbing and manipulating data all over the place, and as we ma
 
 ## Grabbing our services
 
-Previously, we've been using `$controller` to get our services, so logically we should be using `$service` to grab our services. Unfortunately, it's not that simple. We use `$controller` to both grab and instantiate our controllers. We don't need to instantiate our services, so we use a nice service named `$injector`!
+Previously, we've been using `$controller` to get our controllers, so logically we should be using `$service` to grab our services. Unfortunately, it's not that simple. We use `$controller` to both grab and instantiate our controllers. We don't need to instantiate our services, so we use a nice service named `$injector`!
 
 Let's take a look at how we'd grab our service:
 
@@ -112,7 +112,7 @@ describe('UserService', function () {
 });
 ```
 
-We're now setup to receive the mocked backend response. In this case, we'll get back an object with `name` equal to `Bill Gates` and his email too.
+We're now setup to receive the mocked backend response. Our response will have several properties, with the `data` property referring to the body of our response. In this case, It'l be an object with `name` equal to `Bill Gates` and his email too.
 
 ```js
 describe('UserService', function () {
@@ -133,7 +133,8 @@ describe('UserService', function () {
         UserService
           .getUserInfo()
           .then(function (res) {
-            if (res.email === 'bill@microsoft.com' && res.user === 'Bill Gates') {
+            var data = res.data;
+            if (data.email === 'bill@microsoft.com' && data.user === 'Bill Gates') {
               done();
             }
           });
