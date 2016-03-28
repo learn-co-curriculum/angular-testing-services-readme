@@ -112,7 +112,7 @@ describe('UserService', function () {
 });
 ```
 
-We're now setup to receive the mocked backend response. Our response will have several properties, with the `data` property referring to the body of our response. In this case, It'l be an object with `name` equal to `Bill Gates` and his email too.
+We're now setup to receive the mocked backend response. Our response will have several properties, with the `data` property referring to the body of our response. In this case, It'll be an object with `name` equal to `Bill Gates` and his email too.
 
 ```js
 describe('UserService', function () {
