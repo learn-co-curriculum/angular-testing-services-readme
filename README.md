@@ -70,7 +70,7 @@ There are three parts to `$httpBackend`:
 
 ### $httpBackend.when
 
-We use `$httpBackend` to setup the responses to our HTTP calls. It accepts a method and a URL, and allows us to define the response that we'd get back.
+We use `$httpBackend` to set up the responses to our HTTP calls. It accepts a method and a URL, and allows us to define the response that we'd get back.
 
 If we have a backend endpoint at `/rest/user` that responds with the current user's information, we can mock it as follows:
 
@@ -112,7 +112,7 @@ describe('UserService', function () {
 });
 ```
 
-We're now setup to receive the mocked backend response. Our response will have several properties, with the `data` property referring to the body of our response. In this case, It'll be an object with `name` equal to `Bill Gates` and his email too.
+We're now set up to receive the mocked backend response. Our response will have several properties, with the `data` property referring to the body of our response. In this case, it'll be an object with `name` equal to `Bill Gates` and his email too.
 
 ```js
 describe('UserService', function () {
@@ -146,7 +146,7 @@ Here, instead of using `expect().toBe()`, we call a function named `done()` if o
 
 ### $httpBackend.flush()
 
-We then need to call `$httpBackend.flush()` to immediately execute all pending requests (which then fires off our request, calling our callback with the returned data and runs the test).
+We then need to call `$httpBackend.flush()` to immediately execute all pending requests (which then fires off our request, calling our callback with the returned data and running the test).
 
 ```js
 describe('UserService', function () {
@@ -177,4 +177,4 @@ describe('UserService', function () {
 });
 ```
 
-All done! We've now got a fully tested `UserService`, including mocked HTTP requests.
+All done! We now have a fully tested `UserService`, including mocked HTTP requests.
