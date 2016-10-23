@@ -55,7 +55,7 @@ describe('MathService', function () {
 
 
     it('should add up correctly', function () {
-        expect(MathService.sum([1,23]).toEqual(24);
+        expect(MathService.sum([1,23])).toEqual(24);
     });
 });
 ```
@@ -178,3 +178,5 @@ describe('UserService', function () {
 ```
 
 All done! We've now got a fully tested `UserService`, including mocked HTTP requests.
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/angular-testing-services-readme'>Testing Services</a> on Learn.co and start learning to code for free.</p>
