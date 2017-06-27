@@ -55,7 +55,7 @@ describe('MathService', function () {
 
 
     it('should add up correctly', function () {
-        expect(MathService.sum([1,23]).toEqual(24);
+        expect(MathService.sum([1,23])).toEqual(24);
     });
 });
 ```
